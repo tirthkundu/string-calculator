@@ -1,11 +1,13 @@
-export const add = (numbers:string):number => {
-    if (numbers === '') {
-      return 0;
+export const add = (numbers: string): number => {
+    if (!numbers) return 0;
+    
+    const delimiter = ',';
+    const numArray = numbers.split(delimiter).map(Number);
+  
+    if (numArray.some(isNaN)) {
+      throw new Error('Input contains invalid numbers');
     }
-
-    let delimiter = ',';
   
-    const numArray = numbers.split(delimiter);
-  
-    return numArray.map(Number).reduce((sum, num) => sum + num, 0);
+    return numArray.reduce((sum, num) => sum + num, 0);
   };
+  

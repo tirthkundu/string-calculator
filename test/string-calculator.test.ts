@@ -14,4 +14,8 @@ describe('String Calculator Tests', () => {
     expect(add('1,5')).toEqual(6);
   });
 
+  it('should throw an error for input containing invalid numbers', () => {
+    expect(() => add('1,a')).toThrow('Input contains invalid numbers');
+  });
+
 }); 
