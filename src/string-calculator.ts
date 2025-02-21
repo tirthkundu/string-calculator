@@ -1,10 +1,17 @@
 export const add = (numbers: string): number => {
-    if (!numbers) return 0;
-    
-    const delimiters = [',', '\n'];
-    const delimiterPattern = new RegExp(`[${delimiters.join('')}]`); 
+    if (numbers === '') {
+      return 0;
+    }
   
-    const numArray = numbers.split(delimiterPattern).map(Number);
+    let delimiter = ',';
+  
+    if (numbers.startsWith('//')) {
+      const delimiterEndIndex = numbers.indexOf('\n');
+      delimiter = numbers.substring(2, delimiterEndIndex);
+      numbers = numbers.substring(delimiterEndIndex + 1);
+    }
+  
+    const numArray = numbers.split(new RegExp(`[${delimiter}\n]`)).map(Number);
   
     if (numArray.some(isNaN)) {
       throw new Error('Input contains invalid numbers');
@@ -12,4 +19,3 @@ export const add = (numbers: string): number => {
   
     return numArray.reduce((sum, num) => sum + num, 0);
   };
-  
