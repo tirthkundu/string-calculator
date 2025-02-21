@@ -1,25 +1,16 @@
-import { extractDelimiter } from "./utils";
+import { extractDelimiter, validateNumbers } from "./utils";
 
 export const add = (numbers: string): number => {
-    if (!numbers) return 0; 
-    let delimiter = ',';
-    if (numbers.startsWith('//')) {
-      [delimiter, numbers] = extractDelimiter(numbers);
-    }
-  
-    const numArray = numbers.split(new RegExp(`[${delimiter}\n]`)).map(Number);
-  
-    if (numArray.some(isNaN)) {
-      throw new Error('Input contains invalid numbers');
-    }
+  if (!numbers) return 0; 
 
-    const negativeNumbers = numArray.filter(num => num < 0);
+  let delimiter = ',';
+  if (numbers.startsWith('//')) {
+    [delimiter, numbers] = extractDelimiter(numbers);
+  }
 
-    if (negativeNumbers.length > 0) {
-        throw new Error(`Negative numbers not allowed: ${negativeNumbers.join(', ')}`);
-    }
-  
-    return numArray.reduce((sum, num) => sum + num, 0);
-  };
-  
-  
+  const numArray = numbers.split(new RegExp(`[${delimiter}\n]`)).map(Number);
+
+  validateNumbers(numArray);
+
+  return numArray.reduce((sum, num) => sum + num, 0);
+};
