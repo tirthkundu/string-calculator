@@ -46,5 +46,6 @@ To format the code, use:
 ```
 npm run format
 ```
+## Screnshots
+<img width="881" alt="passed-test-cases" src="https://github.com/user-attachments/assets/f9c54c51-f1c3-4401-8acc-a817af1ac493" />
 
-  
