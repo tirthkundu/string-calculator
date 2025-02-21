@@ -22,4 +22,8 @@ describe('String Calculator Tests', () => {
     expect(add('1\n2,3')).toEqual(6);
   });
 
+  it('should handle custom delimiters', () => {
+    expect(add('//;\n1;2')).toEqual(3);
+  });
+
 }); 
