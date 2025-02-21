@@ -20,4 +20,7 @@ describe('String Calculator Tests', () => {
     it('should handle custom delimiters', () => {
         expect((0, string_calculator_1.add)('//;\n1;2')).toEqual(3);
     });
+    it('should throw an exception for negative numbers', () => {
+        expect(() => (0, string_calculator_1.add)('1,-2,3,-4')).toThrow('Negative numbers not allowed: -2, -4');
+    });
 });
