@@ -18,7 +18,7 @@ describe('String Calculator Tests', () => {
     expect(() => add('1,a')).toThrow('Input contains invalid numbers');
   });
 
-  it('should handle new lines between numbers', function() {
+  it('should handle new lines between numbers', () => {
     expect(add('1\n2,3')).toEqual(6);
   });
 
