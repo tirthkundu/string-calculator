@@ -2,7 +2,7 @@ export const add = (numbers: string): number => {
     if (!numbers) return 0;
     
     const delimiter = ',';
-    const numArray = numbers.split(delimiter).map(Number);
+    const numArray = numbers.split(new RegExp(`[${delimiter}\n]`)).map(Number);
   
     if (numArray.some(isNaN)) {
       throw new Error('Input contains invalid numbers');
