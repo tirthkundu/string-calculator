@@ -1,7 +1,7 @@
-import { extractDelimiter, validateNumbers } from "./utils";
+import { extractDelimiter, validateNumbers } from './utils';
 
 export const add = (numbers: string): number => {
-  if (!numbers) return 0; 
+  if (!numbers) return 0;
 
   let delimiter = ',';
   if (numbers.startsWith('//')) {
